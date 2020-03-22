@@ -1,13 +1,15 @@
-import React from 'react';
+import React,{Component,Fragment} from 'react';
 import {GlobalStyle} from './style';
+import Header from './common/header';
 
-function App() {
-  return (
-    <div className="sihong">
+class App extends Component {
+  render() {
+    return (
+      <Fragment>
       <GlobalStyle/>
-      hello world
-    </div>
-  );
+        <Header/>
+      </Fragment>
+    )
+  }
 }
-
 export default App;
