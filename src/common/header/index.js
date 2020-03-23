@@ -1,6 +1,7 @@
 import React from 'react';
 import {CSSTransition} from 'react-transition-group';
 import { connect } from 'react-redux';
+import {actionCreators} from './store';
 import {
   HeaderWrapper,
   Logo,
@@ -67,16 +68,12 @@ const mapDispatchToProps = (dispatch)=> {
       // this.setState({
       //   focused: true
       // })
-      const action = {
-        type: "search_focus"
-      }
+      const action =  actionCreators.searchFocus();
       dispatch(action);
     },
     // input框失焦时 后 要做的事情
     handleInputBlur() {
-      const action = {
-        type: "search_blur"
-      }
+      const action = actionCreators.searchBlur();
       dispatch(action);
     }
   }
