@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {CSSTransition} from 'react-transition-group';
 import {
   HeaderWrapper,
   Logo,
@@ -20,11 +21,14 @@ class Header extends Component {
     this.handleInputBlur = this.handleInputBlur.bind(this);
   }
 
+  // input框聚焦时 后 要做的事情
   handleInputFocus() {
     this.setState({
       focused: true
     })
   }
+
+  // input框失焦时 后 要做的事情
   handleInputBlur() {
     this.setState({
       focused: false
@@ -44,12 +48,18 @@ class Header extends Component {
           </NavItem>
 
          <SearchWrapper>
-          <NavSearch 
-            className={this.state.focused ? 'focused':''}
-            onFocus={this.handleInputFocus}
-            onBlur={this.handleInputBlur}
-          >
-          </NavSearch>
+           <CSSTransition
+            timeout={500}
+            in={this.state.focused}
+            classNames="slide"
+           >
+            <NavSearch 
+              className={this.state.focused ? 'focused':''}
+              onFocus={this.handleInputFocus}
+              onBlur={this.handleInputBlur}
+            >
+            </NavSearch>
+          </CSSTransition>
           <i className={this.state.focused ? 'focused icon iconfont':'icon iconfont'}>&#xe62b;</i> 
          </SearchWrapper>
 

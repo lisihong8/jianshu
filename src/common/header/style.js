@@ -50,6 +50,20 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
   position: relative;
   float: left;
+  .slide-enter {
+    width: 160px;
+    transition: all .5s ease-out;
+  }
+  .slide-enter-active {
+    width: 240px;
+  }
+  .slide-exit {
+    width: 240px;
+    transition: all .5s ease-out;
+  }
+  .slide-exit-active {
+    width: 160px;
+  }
   .iconfont {
     position: absolute;
     right: 5px;
@@ -59,6 +73,7 @@ export const SearchWrapper = styled.div`
     line-height: 30px;
     text-align: center;
     border-radius: 15px; 
+    font-size: 16px;
     &.focused {
       background: #999;
       color: #fff;
