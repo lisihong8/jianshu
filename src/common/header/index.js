@@ -9,6 +9,11 @@ import {
   NavItem,
   SearchWrapper,
   NavSearch,
+  SearchInfo,
+  SearchInfoTitle,
+  SearchInfoSwitch,
+  SearchInfoList,
+  SearchInfoItem,
   Addition,
   Button
 } from './style';
@@ -41,6 +46,25 @@ const Header = (props)=> {
           </NavSearch>
         </CSSTransition>
         <i className={props.focused ? 'focused icon iconfont':'icon iconfont'}>&#xe62b;</i> 
+        <SearchInfo>
+          <SearchInfoTitle>
+            热门搜索
+            <SearchInfoSwitch>换一批</SearchInfoSwitch>
+          </SearchInfoTitle>
+          <SearchInfoList>
+            <SearchInfoItem>教育</SearchInfoItem>
+            <SearchInfoItem>教育</SearchInfoItem>
+            <SearchInfoItem>教育</SearchInfoItem>
+            <SearchInfoItem>教育</SearchInfoItem>
+            <SearchInfoItem>教育</SearchInfoItem>
+            <SearchInfoItem>教育</SearchInfoItem>
+            <SearchInfoItem>教育</SearchInfoItem>
+            <SearchInfoItem>教育</SearchInfoItem>
+            <SearchInfoItem>教育</SearchInfoItem>
+            <SearchInfoItem>教育</SearchInfoItem>
+            <SearchInfoItem>教育</SearchInfoItem>
+          </SearchInfoList>
+        </SearchInfo>
        </SearchWrapper>
 
       </Nav>
@@ -64,7 +88,7 @@ const mapStateToProps = (state)=> {
 
     // focused: state.get('header').get('focused') 等价于 focused: state.getIn(['header','focused'])
     focused: state.getIn(['header','focused'])
-    
+
   }
 }
 
