@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {CSSTransition} from 'react-transition-group';
+import { connect } from 'react-redux';
 import {
   HeaderWrapper,
   Logo,
@@ -12,28 +13,7 @@ import {
 } from './style';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      focused: false
-    }
-    this.handleInputFocus = this.handleInputFocus.bind(this);
-    this.handleInputBlur = this.handleInputBlur.bind(this);
-  }
 
-  // input框聚焦时 后 要做的事情
-  handleInputFocus() {
-    this.setState({
-      focused: true
-    })
-  }
-
-  // input框失焦时 后 要做的事情
-  handleInputBlur() {
-    this.setState({
-      focused: false
-    })
-  }
   render() {
     return (
       <HeaderWrapper>
@@ -50,17 +30,18 @@ class Header extends Component {
          <SearchWrapper>
            <CSSTransition
             timeout={500}
-            in={this.state.focused}
+            in={this.props.focused}
             classNames="slide"
            >
             <NavSearch 
-              className={this.state.focused ? 'focused':''}
-              onFocus={this.handleInputFocus}
-              onBlur={this.handleInputBlur}
+              className={this.props.focused ? 'focused':''}
+              onFocus={this.props.handleInputFocus}
+              onBlur={this.props.handleInputBlur}
+              value={this.props.value}
             >
             </NavSearch>
           </CSSTransition>
-          <i className={this.state.focused ? 'focused icon iconfont':'icon iconfont'}>&#xe62b;</i> 
+          <i className={this.props.focused ? 'focused icon iconfont':'icon iconfont'}>&#xe62b;</i> 
          </SearchWrapper>
 
         </Nav>
@@ -74,4 +55,32 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state)=> {
+  return {
+    focused: state.focused
+  }
+}
+
+const mapDispatchToProps = (dispatch)=> {
+  return {
+    // input框聚焦时 后 要做的事情
+    handleInputFocus() {
+      // this.setState({
+      //   focused: true
+      // })
+      const action = {
+        type: "search_focus"
+      }
+      dispatch(action);
+    },
+    // input框失焦时 后 要做的事情
+    handleInputBlur() {
+      const action = {
+        type: "search_blur"
+      }
+      dispatch(action);
+    }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (Header);
