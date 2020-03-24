@@ -20,8 +20,9 @@ import {
 
 class Header extends Component {
 
-  getListArea = (show)=> {
-    if(show) {
+  getListArea = ()=> {
+    
+    if(this.props.focused) {
       return (
         <SearchInfo>
             <SearchInfoTitle>
@@ -29,17 +30,14 @@ class Header extends Component {
               <SearchInfoSwitch>换一批</SearchInfoSwitch>
             </SearchInfoTitle>
             <SearchInfoList>
-              <SearchInfoItem>教育</SearchInfoItem>
-              <SearchInfoItem>教育</SearchInfoItem>
-              <SearchInfoItem>教育</SearchInfoItem>
-              <SearchInfoItem>教育</SearchInfoItem>
-              <SearchInfoItem>教育</SearchInfoItem>
-              <SearchInfoItem>教育</SearchInfoItem>
-              <SearchInfoItem>教育</SearchInfoItem>
-              <SearchInfoItem>教育</SearchInfoItem>
-              <SearchInfoItem>教育</SearchInfoItem>
-              <SearchInfoItem>教育</SearchInfoItem>
-              <SearchInfoItem>教育</SearchInfoItem>
+             {
+               this.props.list.map((item,index)=>{
+                 return (
+                  <SearchInfoItem key={item}>{item}</SearchInfoItem>
+                 )
+               })
+             }
+              
             </SearchInfoList>
           </SearchInfo>
       )
@@ -77,7 +75,7 @@ class Header extends Component {
           </CSSTransition>
           <i className={this.props.focused ? 'focused icon iconfont':'icon iconfont'}>&#xe62b;</i> 
   
-          {this.getListArea(this.props.focused)}
+          {this.getListArea()}
   
          </SearchWrapper>
   
@@ -103,7 +101,8 @@ const mapStateToProps = (state)=> {
     // focused: state.header.get('focused')
 
     // focused: state.get('header').get('focused') 等价于 focused: state.getIn(['header','focused'])
-    focused: state.getIn(['header','focused'])
+    focused: state.getIn(['header','focused']),
+    list: state.getIn(['header','list'])
 
   }
 }
@@ -115,8 +114,11 @@ const mapDispatchToProps = (dispatch)=> {
       // this.setState({
       //   focused: true
       // })
-      const action =  actionCreators.searchFocus();
-      dispatch(action);
+      // const action = actionCreators.getList();
+      dispatch( actionCreators.getList())
+
+      // const action = actionCreators.searchFocus();
+      dispatch(actionCreators.searchFocus());
     },
     // input框失焦时 后 要做的事情
     handleInputBlur() {

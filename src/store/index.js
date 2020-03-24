@@ -1,4 +1,5 @@
-import {createStore,compose} from 'redux';
+import {createStore,applyMiddleware,compose} from 'redux';
+import thunk from 'redux-thunk';
 import reducer from './reducer';
 
 const composeEnhancers =
@@ -8,7 +9,7 @@ const composeEnhancers =
       // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
     }) : compose;
 
-const enhancer = composeEnhancers();
+const enhancer = composeEnhancers(applyMiddleware(thunk));
 
 const store = createStore(reducer, enhancer);
 

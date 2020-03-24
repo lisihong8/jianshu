@@ -5,7 +5,8 @@ import { fromJS } from 'immutable';
 // immutable库 facebook immutable对象
 
 const defaultState = fromJS({
-  focused: false
+  focused: false,
+  list: []
 })
 
 export default (state=defaultState,action)=> {
@@ -28,5 +29,11 @@ export default (state=defaultState,action)=> {
     // return newState;
     return state.set('focused',false);
   }
+
+  if(action.type === constants.GET_INIT_LIST) {    
+    return state.set('list',action.data);
+  }
+
   return state;
+
 }
