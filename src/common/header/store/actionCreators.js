@@ -5,7 +5,7 @@ import axios from 'axios';
 const getInitList = (data)=>({
   type: constants.GET_INIT_LIST,
   data: fromJS(data),
-  totalPage: Math.ceil(data.length/10)
+  totalPage: Math.ceil(data.length/10),
 });
 
 export  const searchFocus = ()=> ({
@@ -22,6 +22,11 @@ export const getMouseEnter = ()=> ({
 
 export const getMouseLeave = ()=>({
   type: constants.MOUSE_LEAVE
+});
+
+export const changePage = (page)=>({
+  type:constants.CHANGE_PAGE,
+  page
 })
 
 export const getList = ()=> {
