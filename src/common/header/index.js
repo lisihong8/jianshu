@@ -26,18 +26,24 @@ class Header extends Component {
     const pageList = [];
     // 因为list是immutable数组,所以需要把list转化成普通数组才可以通过下标的形式获取到值. 
     const newList = list.toJS()
-
+    // console.log(page,"newList");
+    
     if(newList.length) {
       for(let i=(page-1)*10;i<page*10;i++) {
-        //console.log(newList[i]);
-        pageList.push(
-          <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
-        )
+        //console.log(newList[i],111111111);
+        if(newList[i]){
+          pageList.push(
+            <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+          )
+        }
+        
       }
+      // console.log(pageList,"pageList");
     }
    
     
     if(focused || mouseEnter) {
+      
       return (
         <SearchInfo 
           onMouseEnter={handleMouseEnter}
@@ -53,9 +59,11 @@ class Header extends Component {
               </SearchInfoSwitch>
             </SearchInfoTitle>
 
-            <SearchInfoList>
-             {pageList}    
-            </SearchInfoList>
+           
+              <SearchInfoList >
+              {pageList}    
+             </SearchInfoList>
+           
 
           </SearchInfo>
       )

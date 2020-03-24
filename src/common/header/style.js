@@ -113,6 +113,7 @@ export const SearchInfo = styled.div`
   box-shadow: 0 0 8px rgba(0,0,0,.2);
   padding: 0 15px 15px 15px;
   box-sizing: border-box;
+  z-index: 10;
   &:after {
     position: absolute;
     left: 35px;
