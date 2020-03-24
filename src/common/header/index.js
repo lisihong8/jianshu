@@ -65,7 +65,7 @@ class Header extends Component {
   }
 
   render() {
-    const {value,focused,handleInputFocus,handleInputBlur} = this.props;
+    const {value,focused,list,handleInputFocus,handleInputBlur} = this.props;
     return (
       <HeaderWrapper>
         {/* <Logo href="/"></Logo> */}
@@ -86,7 +86,7 @@ class Header extends Component {
            >
             <NavSearch 
               className={focused ? 'focused':''}
-              onFocus={handleInputFocus}
+              onFocus={()=>{handleInputFocus(list)}}
               onBlur={handleInputBlur}
               value={value}
             >
@@ -132,13 +132,18 @@ const mapStateToProps = (state)=> {
 const mapDispatchToProps = (dispatch)=> {
   return {
     // input框聚焦时 后 要做的事情
-    handleInputFocus() {
+    handleInputFocus(list) {
+      console.log(list);
       // this.setState({
       //   focused: true
       // })
       // const action = actionCreators.getList();
-      dispatch( actionCreators.getList())
 
+      // if(list.length === 0) {
+      //   dispatch( actionCreators.getList())
+      // }
+      (list.size === 0) && dispatch(actionCreators.getList());
+      
       // const action = actionCreators.searchFocus();
       dispatch(actionCreators.searchFocus());
     },
@@ -172,7 +177,7 @@ const mapDispatchToProps = (dispatch)=> {
       }
       // 然后 就给这个i标签元素上的transform的rotate在原来的值的基础上增加360度
       spin.style.transform = 'rotate('+(originAngle+360)+'deg)';
-      
+
       if(page < totalPage) {
         dispatch(actionCreators.changePage(page+1));
       }else {

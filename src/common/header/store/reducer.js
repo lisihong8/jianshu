@@ -32,7 +32,7 @@ export default (state=defaultState,action)=> {
       return state.set('mouseEnter',true);
 
     case constants.MOUSE_LEAVE:
-      return state.set('mouseEnter',true);
+      return state.set('mouseEnter',false);
 
     case constants.CHANGE_PAGE:
       return state.set('page',action.page);
