@@ -4,7 +4,8 @@ import axios from 'axios';
 
 const getInitList = (data)=>({
   type: constants.GET_INIT_LIST,
-  data: fromJS(data)
+  data: fromJS(data),
+  totalPage: Math.ceil(data.length/10)
 });
 
 export  const searchFocus = ()=> ({
@@ -14,6 +15,14 @@ export  const searchFocus = ()=> ({
 export  const  searchBlur = ()=> ({
   type: constants.SEARCH_BLUR
 });
+
+export const getMouseEnter = ()=> ({
+  type: constants.MOUSE_ENTER
+});
+
+export const getMouseLeave = ()=>({
+  type: constants.MOUSE_LEAVE
+})
 
 export const getList = ()=> {
   return (dispatch)=> {

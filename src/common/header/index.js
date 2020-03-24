@@ -22,11 +22,14 @@ class Header extends Component {
 
   getListArea = ()=> {
 
-    const {focused,list} = this.props;
+    const {focused,list,mouseEnter,handleMouseEnter,handleMouseLeave} = this.props;
     
-    if(focused) {
+    if(focused || mouseEnter) {
       return (
-        <SearchInfo>
+        <SearchInfo 
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
             <SearchInfoTitle>
               热门搜索
               <SearchInfoSwitch>换一批</SearchInfoSwitch>
@@ -105,7 +108,8 @@ const mapStateToProps = (state)=> {
 
     // focused: state.get('header').get('focused') 等价于 focused: state.getIn(['header','focused'])
     focused: state.getIn(['header','focused']),
-    list: state.getIn(['header','list'])
+    list: state.getIn(['header','list']),
+    mouseEnter: state.getIn(['header','mouseEnter'])
 
   }
 }
@@ -127,6 +131,12 @@ const mapDispatchToProps = (dispatch)=> {
     handleInputBlur() {
       const action = actionCreators.searchBlur();
       dispatch(action);
+    },
+    handleMouseEnter() {
+      dispatch(actionCreators.getMouseEnter());
+    },
+    handleMouseLeave() {
+      dispatch(actionCreators.getMouseLeave());
     }
   }
 }
