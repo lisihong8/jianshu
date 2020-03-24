@@ -2,17 +2,17 @@ import * as constants from './constants';
 import {fromJS} from 'immutable';
 import axios from 'axios';
 
+const getInitList = (data)=>({
+  type: constants.GET_INIT_LIST,
+  data: fromJS(data)
+});
+
 export  const searchFocus = ()=> ({
   type: constants.SEARCH_FOCUS
 });
 
 export  const  searchBlur = ()=> ({
   type: constants.SEARCH_BLUR
-});
-
-export const getInitList = (data)=>({
-  type: constants.GET_INIT_LIST,
-  data: fromJS(data)
 });
 
 export const getList = ()=> {
@@ -31,4 +31,4 @@ export const getList = ()=> {
         console.log("error 出错了");
       })
   }
-}
+};
