@@ -29,7 +29,7 @@ class Header extends Component {
 
     if(newList.length) {
       for(let i=(page-1)*10;i<page*10;i++) {
-        console.log(newList[i]);
+        //console.log(newList[i]);
         pageList.push(
           <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
         )
@@ -45,7 +45,12 @@ class Header extends Component {
         >
             <SearchInfoTitle>
               热门搜索
-              <SearchInfoSwitch onClick={()=>{handleChangePage(page,totalPage)}}>换一批</SearchInfoSwitch>
+              <SearchInfoSwitch 
+                onClick={()=>{handleChangePage(page,totalPage,this.spinIcon)}}
+              >
+                <i className="icon iconfont spin" ref={(icon)=>{this.spinIcon=icon}}>&#xe851;</i> 
+                换一批
+              </SearchInfoSwitch>
             </SearchInfoTitle>
 
             <SearchInfoList>
@@ -87,7 +92,7 @@ class Header extends Component {
             >
             </NavSearch>
           </CSSTransition>
-          <i className={focused ? 'focused icon iconfont':'icon iconfont'}>&#xe62b;</i> 
+          <i className={focused ? 'focused icon iconfont zoom':'icon iconfont zoom'}>&#xe62b;</i> 
   
           {this.getListArea()}
   
@@ -148,8 +153,26 @@ const mapDispatchToProps = (dispatch)=> {
     handleMouseLeave() {
       dispatch(actionCreators.getMouseLeave());
     },
-    handleChangePage(page,totalPage) {
-      console.log(page,totalPage);
+    handleChangePage(page,totalPage,spin) {
+      // console.log(page,totalPage);
+      //console.log(spin);
+      //console.log(spin.style.transform);
+      //spin.style.transform = "rotate(360deg)";
+      let originAngle = spin.style.transform.replace(/[^0-9]/ig,'');
+      // i 是 ignore case 忽略大小写
+      // g 是global 匹配全局
+      // transform 的值 rotate(???deg);
+      // 比如 transform=rotate(150deg);首先忽略大小写 全局搜索 把那些不是0到9的数字的字符串 替换成 空字符串
+      // transform='       150    
+      // 如果originAngle不是空的字符串的话,就用parseInt方法把它转化成 整数,如果是空的字符串就直接让originAngle等于0
+      if(originAngle) {
+        originAngle = parseInt(originAngle,10);
+      }else {
+        originAngle = 0;
+      }
+      // 然后 就给这个i标签元素上的transform的rotate在原来的值的基础上增加360度
+      spin.style.transform = 'rotate('+(originAngle+360)+'deg)';
+      
       if(page < totalPage) {
         dispatch(actionCreators.changePage(page+1));
       }else {
