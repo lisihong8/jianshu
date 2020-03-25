@@ -1,4 +1,7 @@
 import React,{Component} from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+
 import {
   HomeWrapper,
   HomeLeft,
@@ -19,6 +22,21 @@ class Home extends Component {
       img1:img1
     }
   }
+  componentDidMount() {
+    axios.get('http://localhost:8080/home').then((res)=> {
+      console.log(res.data.data);
+      const result = res.data.data;
+      const action = {
+        type:'change_home_data',
+        topicList: result.topicList,
+        articleList: result.articleList,
+        recommendList: result.recommendList
+      }
+      this.props.changeHomeData(action);
+    }).catch((error)=> {
+      console.log("哈哈哈 出错了");
+    })
+  }
   render() {
     return(
       <HomeWrapper>
@@ -37,4 +55,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapDispatchToProps = (dispatch)=> ({
+    changeHomeData(action) {
+      dispatch(action);
+    }
+  })
+
+export default connect(null,mapDispatchToProps)(Home);
