@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{PureComponent} from 'react';
 
 import { connect } from 'react-redux';
 
@@ -18,7 +18,7 @@ import Writer from './components/Writer';
 
 import img1 from './../../statics/1.jpeg';
 
-class Home extends Component {
+class Home extends PureComponent {
   constructor(props){
     super(props)
     this.state={
@@ -39,7 +39,7 @@ class Home extends Component {
   componentWillUnmount() {
     window.removeEventListener('scroll',this.props.changeScrollToShow);
   }
-  
+
   handleScrollTop() {
     window.scrollTo(0,0);
   }
