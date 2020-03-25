@@ -7,10 +7,11 @@ import {
 
 class List extends Component {
   render() {
+    const {list} = this.props;
     return(
       <div>
         {
-          this.props.list.map((item,index)=>(
+          list.map((item,index)=>(
           <ListItem key={item.get('id')}>
             <img className="pic" src={item.get('imgUrl')} alt=""/>
             <ListInfo>

@@ -61,6 +61,19 @@ const defaultState = fromJS({
     title: '愿你眼里有光，肚里有粮，心中有爱，过好仅此一生。',
     desc: '今天不分享书籍，跟大家聊聊读书那些事儿。                    1 昨天，我问安安，推送文章中，什么样的封面最吸引你，一眼就想点...',
     imgUrl: 'https://upload-images.jianshu.io/upload_images/22364852-fc33f100a03eff1d.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240'
+  }],
+  recommendList:[{
+    id: 1,
+    imgUrl: 'http://cdn2.jianshu.io/assets/web/banner-s-club-aa8bdf19f8cf729a759da42e4a96f366.png'
+  },{
+    id: 2,
+    imgUrl: 'http://cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png'
+  },{
+    id: 3,
+    imgUrl: 'http://cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png'
+  },{
+    id: 4,
+    imgUrl: 'http://cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png'
   }]
 })
 
