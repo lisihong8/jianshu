@@ -20,12 +20,16 @@ class App extends Component {
         <GlobalStyle/>
         <GlobalIconFontStyle/>
         <Provider store={store}>
-          <Header/>
+          
           <BrowserRouter>
-            {/* <Route path="/" exact render={()=><div>home</div>}></Route>
-            <Route path="/detail" exact render={()=><div>detail</div>}></Route> */}
-            <Route path="/" exact component={Home}></Route>
-            <Route path="/detail" exact component={Detail}></Route>
+            <div>
+              <Header/>
+              {/* <Route path="/" exact render={()=><div>home</div>}></Route>
+              <Route path="/detail" exact render={()=><div>detail</div>}></Route> */}
+            
+              <Route path="/" exact component={Home}></Route>
+              <Route path="/detail" exact component={Detail}></Route>
+            </div>
           </BrowserRouter>
         </Provider>
       </Fragment>
