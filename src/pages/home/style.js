@@ -118,3 +118,19 @@ export const WriterWrapper = styled.div`
   line-height: 600px;
   text-align: center;
 `;
+
+
+export const BackTop = styled.div`
+  position: fixed;
+  right: 100px;
+  bottom: 30px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  background: rgba(255, 184, 79);
+  font-size: 12px;
+  cursor: pointer;
+`;

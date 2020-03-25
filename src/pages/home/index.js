@@ -7,7 +7,8 @@ import {actionCreators} from './store';
 import {
   HomeWrapper,
   HomeLeft,
-  HomeRight
+  HomeRight,
+  BackTop
 } from './style';
 
 import Topic from './components/Topic';
@@ -23,10 +24,17 @@ class Home extends Component {
     this.state={
       img1:img1
     }
+    this.handleScrollTop = this.handleScrollTop.bind(this);
   }
+
   componentDidMount() {
     this.props.changeHomeData();
   }
+
+  handleScrollTop() {
+    window.scrollTo(0,0);
+  }
+
   render() {
     return(
       <HomeWrapper>
@@ -40,6 +48,7 @@ class Home extends Component {
           <Recommend/>
           <Writer/>
         </HomeRight>
+        <BackTop onClick={this.handleScrollTop}>回到顶部</BackTop>
       </HomeWrapper>
     )
   }
