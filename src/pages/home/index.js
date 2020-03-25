@@ -23,19 +23,7 @@ class Home extends Component {
     }
   }
   componentDidMount() {
-    axios.get('http://localhost:8080/home').then((res)=> {
-      console.log(res.data.data);
-      const result = res.data.data;
-      const action = {
-        type:'change_home_data',
-        topicList: result.topicList,
-        articleList: result.articleList,
-        recommendList: result.recommendList
-      }
-      this.props.changeHomeData(action);
-    }).catch((error)=> {
-      console.log("哈哈哈 出错了");
-    })
+    this.props.changeHomeData();
   }
   render() {
     return(
@@ -56,8 +44,21 @@ class Home extends Component {
 }
 
 const mapDispatchToProps = (dispatch)=> ({
-    changeHomeData(action) {
-      dispatch(action);
+    changeHomeData() {
+
+      axios.get('http://localhost:8080/home').then((res)=> {
+        console.log(res.data.data);
+        const result = res.data.data;
+        const action = {
+          type:'change_home_data',
+          topicList: result.topicList,
+          articleList: result.articleList,
+          recommendList: result.recommendList
+        }
+        dispatch(action);
+      }).catch((error)=> {
+        console.log("哈哈哈 出错了");
+      }) 
     }
   })
 
