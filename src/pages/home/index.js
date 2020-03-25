@@ -29,8 +29,17 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.changeHomeData();
+    this.bindEvents();
   }
 
+  bindEvents() {
+    window.addEventListener('scroll',this.props.changeScrollToShow);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll',this.props.changeScrollToShow);
+  }
+  
   handleScrollTop() {
     window.scrollTo(0,0);
   }
@@ -48,18 +57,36 @@ class Home extends Component {
           <Recommend/>
           <Writer/>
         </HomeRight>
-        <BackTop onClick={this.handleScrollTop}>回到顶部</BackTop>
+
+        {
+          this.props.showScroll ? <BackTop onClick={this.handleScrollTop}>回到顶部</BackTop> : null
+        }
+        
       </HomeWrapper>
     )
   }
 }
+
+const mapStateToProps = (state)=>({
+  showScroll: state.getIn(['home','showScroll'])
+})
 
 const mapDispatchToProps = (dispatch)=> ({
     changeHomeData() {
       dispatch(actionCreators.getHomeInfo());
 
       
+    },
+    changeScrollToShow(e) {
+      // console.log(e);
+      console.log(document.documentElement.scrollTop);
+      if(document.documentElement.scrollTop > 400) {
+        dispatch(actionCreators.toggleTopShow(true));
+      } else {
+        dispatch(actionCreators.toggleTopShow(false));
+      }
+      
     }
   })
 
-export default connect(null,mapDispatchToProps)(Home);
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

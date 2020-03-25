@@ -41,3 +41,8 @@ export const getMoreListAction = (page)=> {
     })
   }
 };
+
+export const toggleTopShow = (show)=> ({
+  type: contants.TOGGLE_TOP_SHOW,
+  show
+})
