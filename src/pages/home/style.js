@@ -76,6 +76,22 @@ export const ListInfo = styled.div`
   }
 `;
 
+export const LoadMode = styled.div`
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  margin: 30px 0;
+  border-radius: 20px;
+  font-size: 15px;
+  text-align: center;
+  background: #a5a5a5;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background:  #9b9b9b;
+  }
+`;
+
 export const HomeRight= styled.div`
   float: right;
   width: 280px;
