@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
-import axios from 'axios';
+
 import { connect } from 'react-redux';
+
+import {actionCreators} from './store';
 
 import {
   HomeWrapper,
@@ -45,20 +47,9 @@ class Home extends Component {
 
 const mapDispatchToProps = (dispatch)=> ({
     changeHomeData() {
+      dispatch(actionCreators.getHomeInfo());
 
-      axios.get('http://localhost:8080/home').then((res)=> {
-        console.log(res.data.data);
-        const result = res.data.data;
-        const action = {
-          type:'change_home_data',
-          topicList: result.topicList,
-          articleList: result.articleList,
-          recommendList: result.recommendList
-        }
-        dispatch(action);
-      }).catch((error)=> {
-        console.log("哈哈哈 出错了");
-      }) 
+      
     }
   })
 
