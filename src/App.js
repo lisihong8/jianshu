@@ -11,7 +11,7 @@ import { GlobalIconFontStyle } from './statics/iconfont/iconfont';
 import Header from './common/header';
 import store from './store';
 import Home from './pages/home';
-import Detail from './pages/detail';
+import Detail from './pages/detail/loadable';
 import Login from './pages/login';
 import Write from './pages/write';
 
