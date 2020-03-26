@@ -150,5 +150,12 @@ app.get('/detailList', (req, res) => {
   });
 });
 
+app.get('/login', (req, res) => {
+  res.json({
+    code:0,
+    "data": true
+  });
+});
+
 app.listen(8080);
 console.log("服务开启啦");
