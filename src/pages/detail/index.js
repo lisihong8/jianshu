@@ -14,12 +14,15 @@ import {
 class Detail extends Component {
 
   componentDidMount() {
-    this.props.getDetail(this.props.match.params.id);
+    this.props.getDetail(parseInt(this.props.location.search.replace(/[^0-9]/ig,''),10));
   }
   render() {
 
     console.log(this.props);
-    console.log(this.props.match.params.id);
+    // console.log(this.props.match.params.id);
+    console.log(this.props.location.search); //'?id=4'
+    // const idValue = parseInt(this.props.location.search.replace(/[^0-9]/ig,''),10);
+    // console.log(idValue);
 
     return(
       <DetailWrapper>
