@@ -1,6 +1,5 @@
 
 import axios from 'axios';
-
 import * as contants from './contants';
 import { fromJS } from 'immutable';
 
@@ -45,4 +44,4 @@ export const getMoreListAction = (page)=> {
 export const toggleTopShow = (show)=> ({
   type: contants.TOGGLE_TOP_SHOW,
   show
-})
+});

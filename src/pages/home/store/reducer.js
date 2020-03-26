@@ -24,7 +24,7 @@ const addArticleList = (state,action)=> {
     articleList: state.get('articleList').concat(action.list),
     articlePage: action.nextPage
   });
-}
+};
 
 export default (state=defaultState,action)=> {
   switch(action.type) {
@@ -38,4 +38,4 @@ export default (state=defaultState,action)=> {
     default:
       return state;
   }
-}
+};

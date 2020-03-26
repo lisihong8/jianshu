@@ -43,6 +43,6 @@ const mapDispatchProps = (dispatch)=> ({
   getDetail(id) {
     dispatch(actionCreators.getDetailAction(id));
   }
-})
+});
 
 export default connect(mapStateToProps,mapDispatchProps)(Detail);

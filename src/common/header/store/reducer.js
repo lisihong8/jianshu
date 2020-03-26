@@ -10,7 +10,14 @@ const defaultState = fromJS({
   mouseEnter: false,
   page: 1,
   totalPage: 1
-})
+});
+
+const getInitListMerge = (state,action)=>{
+  return state.merge({
+    list: action.data,
+    totalPage: action.totalPage
+  })
+}
 
 export default (state=defaultState,action)=> {
 
@@ -23,10 +30,7 @@ export default (state=defaultState,action)=> {
     
     case constants.GET_INIT_LIST:
       // return state.set('list',action.data).set('totalPage',action.totalPage);
-      return state.merge({
-        list: action.data,
-        totalPage: action.totalPage
-      })
+      return getInitListMerge(state,action);
     
     case constants.MOUSE_ENTER:
       return state.set('mouseEnter',true);

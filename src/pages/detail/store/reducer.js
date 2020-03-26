@@ -5,14 +5,19 @@ const defaultState = fromJS({
   title: '',
   content: ''
 });
+
+const getDetailDataMerge = (state,action)=>{
+  return state.merge({
+    title: action.title,
+    content: action.content
+  });
+};
+
 export default (state=defaultState,action)=> {
   switch(action.type) {
     case contants.GET_DETAIL_DATA:
-      return state.merge({
-        title: action.title,
-        content: action.content
-      })
+      return getDetailDataMerge(state,action);
     default:
       return state;
   }
-}
+};

@@ -8,6 +8,6 @@ class Writer extends PureComponent {
       <WriterWrapper>homeWork homeWork</WriterWrapper>
     )
   }
-}
+};
 
 export default Writer;

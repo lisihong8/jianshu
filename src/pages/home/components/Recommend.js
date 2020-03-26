@@ -20,10 +20,10 @@ class Recommend extends PureComponent {
       </RecommendWrapper>
     )
   }
-}
+};
 
 const mapStateToProps = (state)=> ({
   list: state.getIn(['home','recommendList'])
-})
+});
 
 export default connect(mapStateToProps,null)(Recommend);

@@ -6,7 +6,7 @@ const changeDetailAction = (result)=> ({
   type: contants.GET_DETAIL_DATA,
   title: result.title,
   content: result.content
-})
+});
 
 export const getDetailAction = (id)=> {
   return (dispatch)=> {
@@ -19,4 +19,4 @@ export const getDetailAction = (id)=> {
       console.log("detailList error");
     })
   }
-}
+};

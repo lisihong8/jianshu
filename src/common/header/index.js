@@ -93,40 +93,34 @@ class Header extends Component {
           <NavItem className="right">
             <i className="icon iconfont">&#xe636;</i> 
           </NavItem>
-  
-         <SearchWrapper>
-           <CSSTransition
-            timeout={500}
-            in={focused}
-            classNames="slide"
-           >
-            <NavSearch 
-              className={focused ? 'focused':''}
-              onFocus={()=>{handleInputFocus(list)}}
-              onBlur={handleInputBlur}
-              value={value}
+          <SearchWrapper>
+            <CSSTransition
+              timeout={500}
+              in={focused}
+              classNames="slide"
             >
-            </NavSearch>
-          </CSSTransition>
-          <i className={focused ? 'focused icon iconfont zoom':'icon iconfont zoom'}>&#xe62b;</i> 
-  
-          {this.getListArea()}
-  
-         </SearchWrapper>
-  
+              <NavSearch 
+                className={focused ? 'focused':''}
+                onFocus={()=>{handleInputFocus(list)}}
+                onBlur={handleInputBlur}
+                value={value}
+              >
+              </NavSearch>
+            </CSSTransition>
+            <i className={focused ? 'focused icon iconfont zoom':'icon iconfont zoom'}>&#xe62b;</i>  
+            {this.getListArea()}
+          </SearchWrapper>
         </Nav>
-  
         <Addition>
           <Link to="/write">
             <Button className="writting">  <i className="icon iconfont">&#xe608;</i> 写文章</Button>
-          </Link>
-          
+          </Link>   
           <Button className="reg">注册</Button>
         </Addition>
       </HeaderWrapper>
     )
   }
-}
+};
 
 
 
@@ -147,7 +141,7 @@ const mapStateToProps = (state)=> {
     login: state.getIn(['login','login'])
 
   }
-}
+};
 
 const mapDispatchToProps = (dispatch)=> {
   return {
@@ -205,9 +199,9 @@ const mapDispatchToProps = (dispatch)=> {
       }
     },
     logout() {
-      dispatch(loginActionCreators.logout())
-    }
+      dispatch(loginActionCreators.logout());
+    },
   }
-}
+};
 
-export default connect(mapStateToProps,mapDispatchToProps) (Header);
+export default connect(mapStateToProps,mapDispatchToProps)(Header);

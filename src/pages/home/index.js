@@ -69,13 +69,11 @@ class Home extends PureComponent {
 
 const mapStateToProps = (state)=>({
   showScroll: state.getIn(['home','showScroll'])
-})
+});
 
 const mapDispatchToProps = (dispatch)=> ({
     changeHomeData() {
-      dispatch(actionCreators.getHomeInfo());
-
-      
+      dispatch(actionCreators.getHomeInfo()); 
     },
     changeScrollToShow(e) {
       // console.log(e);
@@ -85,8 +83,7 @@ const mapDispatchToProps = (dispatch)=> ({
       } else {
         dispatch(actionCreators.toggleTopShow(false));
       }
-      
-    }
-  })
+    },
+});
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home);

@@ -25,10 +25,10 @@ class Topic extends PureComponent {
       </ToppicWrapper>
     )
   }
-}
+};
 
 const mapStateToProps = (state)=> ({
   list: state.getIn(['home','topicList'])
-})
+});
 
 export default connect(mapStateToProps,null)(Topic);
