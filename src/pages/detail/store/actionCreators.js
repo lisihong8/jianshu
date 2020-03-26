@@ -8,9 +8,9 @@ const changeDetailAction = (result)=> ({
   content: result.content
 })
 
-export const getDetailAction = ()=> {
+export const getDetailAction = (id)=> {
   return (dispatch)=> {
-    axios.get('http://localhost:8080/detailList').then((res)=>{
+    axios.get('http://localhost:8080/detailList?id='+id).then((res)=>{
       console.log(res.data.data);
       const result = res.data.data;
       dispatch(changeDetailAction(result));

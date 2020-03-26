@@ -14,9 +14,13 @@ import {
 class Detail extends Component {
 
   componentDidMount() {
-    this.props.getDetail();
+    this.props.getDetail(this.props.match.params.id);
   }
   render() {
+
+    console.log(this.props);
+    console.log(this.props.match.params.id);
+
     return(
       <DetailWrapper>
         <Header>{this.props.title}</Header>
@@ -33,8 +37,8 @@ const mapStateToProps = (state)=> ({
 });
 
 const mapDispatchProps = (dispatch)=> ({
-  getDetail() {
-    dispatch(actionCreators.getDetailAction());
+  getDetail(id) {
+    dispatch(actionCreators.getDetailAction(id));
   }
 })
 
